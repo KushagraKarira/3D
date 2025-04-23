@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Print Cost Estimator</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>3D Print Cost Estimator</h1>
+
+        <div class="upload-section">
+            <label for="stlFile">1. Upload STL File:</label>
+            <input type="file" id="stlFile" accept=".stl">
+            <p id="fileInfo"></p>
+        </div>
+
+        <div class="viewer-section">
+            <h2>2. Preview Model</h2>
+            <div id="viewer">
+                <p id="viewerMessage">Please upload an STL file to view.</p>
+            </div>
+             <p><i>(Scroll to zoom, drag to rotate)</i></p>
+        </div>
+
+        <div class="options-section">
+            <h2>3. Select Options</h2>
+            <div>
+                <label for="colorInput">Desired Color:</label>
+                <input type="text" id="colorInput" placeholder="e.g., Red, Blue, Matte Black">
+            </div>
+            <div>
+                <label for="materialInput">Print Material:</label>
+                <select id="materialInput">
+                    <option value="" data-density="0">-- Select Material --</option>
+                    <option value="PLA" data-density="1.24">PLA (Density: 1.24 g/cm³)</option>
+                    <option value="ABS" data-density="1.04">ABS (Density: 1.04 g/cm³)</option>
+                    <option value="PETG" data-density="1.27">PETG (Density: 1.27 g/cm³)</option>
+                    <option value="TPU" data-density="1.21">TPU (Flexible) (Density: 1.21 g/cm³)</option>
+                    </select>
+            </div>
+        </div>
+
+        <div class="estimate-section">
+            <h2>4. Cost Estimate</h2>
+            <div id="costResult">
+                <p>Please upload a file and select material.</p>
+                <p>Rate: ₹10 per gram</p>
+                 <p class="warning"><strong>Note:</strong> Volume calculation is an approximation for this demo.</p>
+            </div>
+        </div>
+
+        <div class="email-section">
+            <h2>5. Send Information</h2>
+            <p class="warning"><strong>Important:</strong> This will open your default email client. The STL file itself <strong>cannot</strong> be attached automatically due to browser limitations. You will need to attach it manually.</p>
+            <a id="emailLink" class="button disabled" href="#">Generate & Send Email</a>
+             <p id="emailStatus"></p>
+        </div>
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
